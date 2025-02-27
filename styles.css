@@ -1,0 +1,17 @@
+.deck-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.deck {
+    width: 150px;
+    height: 200px;
+    background-color: green;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    line-height: 200px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-block;
+}

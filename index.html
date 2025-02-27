@@ -14,8 +14,18 @@
 
     <!-- React Code Using Babel -->
     <script type="text/babel">
-        console.log("Babel is working");
+        const { useState } = React;
+
+        function Deck() {
+            return (
+                <div className="deck-container">
+                    <h1>Deck of Cards</h1>
+                    <div className="deck">Click to Draw</div>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<Deck />, document.getElementById("root"));
     </script>
 </body>
 </html>
-

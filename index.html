@@ -11,10 +11,16 @@
 </head>
 <body>
     <div id="root"></div>
-
-    <!-- React Code Using Babel -->
     <script type="text/babel">
         const { useState } = React;
+
+        function Card({ card }) {
+            return (
+                <span className="card">
+                    {card.value} {card.suit}
+                </span>
+            );
+        }
 
         function Deck() {
             return (
@@ -27,5 +33,7 @@
 
         ReactDOM.render(<Deck />, document.getElementById("root"));
     </script>
+
 </body>
 </html>
+ 

@@ -15,3 +15,13 @@
     cursor: pointer;
     display: inline-block;
 }
+.card {
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    background: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    margin: 5px;
+    display: inline-block;
+}

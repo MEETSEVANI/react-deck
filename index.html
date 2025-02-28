@@ -87,7 +87,7 @@
                 if (!pickedCard) return; // If no card is picked, do nothing
     
                 setDrawnCards(drawnCards.filter(
-                    (card) => !(card.suit === pickedCard.suit && card.value === pickedCard.value)
+                    (card) => !(card === pickedCard)
                 )); // Remove tossed card from drawn cards
     
                 setPickedCard(null); // Clear selection
@@ -131,7 +131,7 @@
                             <Card
                                 key={index}
                                 card={card}
-                                isPicked={pickedCard && pickedCard.suit === card.suit && pickedCard.value === card.value}
+                                isPicked={pickedCard=== card}
                                 onPick={handlePickCard}
                             />
                         ))}

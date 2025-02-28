@@ -93,9 +93,19 @@
                 setPickedCard(null); // Clear selection
             };
     
+            const addWildcard = () => {
+                const randomSuit = suits[Math.floor(Math.random() * suits.length)];
+                const randomValue = values[Math.floor(Math.random() * values.length)];
+    
+                const wildcard = { suit: randomSuit, value: randomValue };
+    
+                setDrawnCards([...drawnCards, wildcard]); // Add wildcard to drawn list
+            };
+    
             return (
                 <div className="deck-container">
                     <h1>Deck of Cards</h1>
+    
                     {deck.length > 0 ? (
                         <div className="deck" onClick={drawCard}>
                             Click to Draw
@@ -106,12 +116,13 @@
                         </div>
                     )}
     
-                    {/* Buttons for Dealing, Resetting & Tossing Cards */}
+                    {/* Buttons for Dealing, Resetting, Tossing & Wildcard */}
                     <div className="buttons-container">
                         <button onClick={() => dealCards(5)}>Deal 5</button>
                         <button onClick={() => dealCards(7)}>Deal 7</button>
                         <button onClick={resetDeck}>Reset</button>
                         <button onClick={tossCard} disabled={!pickedCard}>Toss</button>
+                        <button onClick={addWildcard}>Wildcard</button>
                     </div>
     
                     {/* Display Drawn Cards */}
@@ -125,13 +136,13 @@
                             />
                         ))}
                     </div>
+    
                 </div>
             );
         }
     
         ReactDOM.render(<Deck />, document.getElementById("root"));
     </script>
-    
     
 </body>
 </html>

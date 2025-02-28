@@ -101,6 +101,10 @@
     
                 setDrawnCards([...drawnCards, wildcard]); // Add wildcard to drawn list
             };
+            const regroupCards = () => {
+            let shuffled = [...drawnCards].sort(() => Math.random() - 0.5);
+            setDrawnCards(shuffled);
+            };
     
             return (
                 <div className="deck-container">
@@ -123,6 +127,7 @@
                         <button onClick={resetDeck}>Reset</button>
                         <button onClick={tossCard} disabled={!pickedCard}>Toss</button>
                         <button onClick={addWildcard}>Wildcard</button>
+                        <button onClick={regroupCards} disabled={drawnCards.length === 0}>Regroup</button>
                     </div>
     
                     {/* Display Drawn Cards */}

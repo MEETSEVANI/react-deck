@@ -1,4 +1,6 @@
 // Importing useState from React
+ //StAuth10244: I  Meet Sevani, 000924119 certify that this material is my original work. 
+ //No other person's work has been used without due acknowledgement. I have not made my work available to anyone else.
 const { useState } = React;
 
 // Suits & Values for a Standard 52-Card Deck

@@ -1,3 +1,7 @@
+/* StAuth10244: I  Meet Sevani, 000924119 certify that this material is my original work. 
+No other person's work has been used without due acknowledgement. I have not made my work available to anyone else
+*/
+
 /* Centering and General Styles */
 body {
     background-color: #2b2b2b;
@@ -131,6 +135,6 @@ button:disabled {
     font-weight: bold;
     margin-top: 10px;
     text-align: center;
-    color: #ffcc00; /* Yellow for high visibility */
+    color: #ffcc00;
 }
 

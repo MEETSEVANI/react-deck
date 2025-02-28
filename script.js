@@ -154,6 +154,7 @@ function Deck() {
                     No Cards Remaining
                 </div>
             )}
+            <p className="cards-left">Cards Left in Deck: {deck.length}</p>
 
             {/* Buttons for Dealing, Resetting, Tossing, Wildcard & Regroup */}
             <div className="buttons-container">

@@ -125,3 +125,12 @@ button:disabled {
     background-color: gray;
     cursor: not-allowed;
 }
+/* Styling for Deck Counter */
+.cards-left {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+    color: #ffcc00; /* Yellow for high visibility */
+}
+

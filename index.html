@@ -29,9 +29,14 @@
             return deck;
         };
     
-        function Card({ card }) {
+        function Card({ card, isPicked, onPick }) {
             return (
-                <span className="card" data-value={card.value} data-suit={card.suit}>
+                <span
+                    className={`card ${isPicked ? "picked" : ""}`}
+                    data-value={card.value}
+                    data-suit={card.suit}
+                    onClick={() => onPick(card)}
+                >
                     <span>{card.suit}</span>
                 </span>
             );
@@ -40,6 +45,7 @@
         function Deck() {
             const [deck, setDeck] = useState(generateDeck()); // Full deck of 52 cards
             const [drawnCards, setDrawnCards] = useState([]); // Stores drawn cards
+            const [pickedCard, setPickedCard] = useState(null); // Stores selected card
     
             const drawCard = () => {
                 if (deck.length === 0) return; // No more cards to draw
@@ -49,6 +55,7 @@
     
                 setDrawnCards([...drawnCards, drawnCard]); // Add card to drawn list
                 setDeck(deck.filter((_, index) => index !== randomIndex)); // Remove from deck
+                setPickedCard(null); // Reset selection
             };
     
             const dealCards = (num) => {
@@ -59,13 +66,36 @@
     
                 setDrawnCards(newDrawnCards);
                 setDeck(deck.filter((card) => !newDrawnCards.includes(card)));
+                setPickedCard(null);
+            };
+    
+            const resetDeck = () => {
+                setDeck(generateDeck()); // Reset deck to full 52 cards
+                setDrawnCards([]); 
+                setPickedCard(null); // Reset picked card
+            };
+    
+            const handlePickCard = (card) => {
+                if (pickedCard && pickedCard.suit === card.suit && pickedCard.value === card.value) {
+                    setPickedCard(null); // Unselect card if clicked again
+                } else {
+                    setPickedCard(card);
+                }
+            };
+    
+            const tossCard = () => {
+                if (!pickedCard) return; // If no card is picked, do nothing
+    
+                setDrawnCards(drawnCards.filter(
+                    (card) => !(card.suit === pickedCard.suit && card.value === pickedCard.value)
+                )); // Remove tossed card from drawn cards
+    
+                setPickedCard(null); // Clear selection
             };
     
             return (
                 <div className="deck-container">
                     <h1>Deck of Cards</h1>
-    
-                    {/* If Deck is Empty, Show "No Cards Remaining" */}
                     {deck.length > 0 ? (
                         <div className="deck" onClick={drawCard}>
                             Click to Draw
@@ -76,16 +106,23 @@
                         </div>
                     )}
     
-                    {/* Buttons for Dealing Cards */}
+                    {/* Buttons for Dealing, Resetting & Tossing Cards */}
                     <div className="buttons-container">
                         <button onClick={() => dealCards(5)}>Deal 5</button>
                         <button onClick={() => dealCards(7)}>Deal 7</button>
+                        <button onClick={resetDeck}>Reset</button>
+                        <button onClick={tossCard} disabled={!pickedCard}>Toss</button>
                     </div>
     
                     {/* Display Drawn Cards */}
                     <div className="drawn-cards">
                         {drawnCards.map((card, index) => (
-                            <Card key={index} card={card} />
+                            <Card
+                                key={index}
+                                card={card}
+                                isPicked={pickedCard && pickedCard.suit === card.suit && pickedCard.value === card.value}
+                                onPick={handlePickCard}
+                            />
                         ))}
                     </div>
                 </div>
@@ -94,6 +131,8 @@
     
         ReactDOM.render(<Deck />, document.getElementById("root"));
     </script>
+    
+    
 </body>
 </html>
  

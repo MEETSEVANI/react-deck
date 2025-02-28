@@ -114,3 +114,13 @@ button {
 button:hover {
     background-color: #005f7f;
 }
+/* Picked Card Highlight */
+.card.picked {
+    border: 3px solid gold;
+    box-shadow: 0 0 10px gold;
+}
+/* Disabled Toss Button */
+button:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+}

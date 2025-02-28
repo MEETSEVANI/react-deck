@@ -13,26 +13,34 @@
     <div id="root"></div>
     <script type="text/babel">
         const { useState } = React;
-
-        function Card({ card }) {
-            return (
-                <span className="card">
-                    {card.value} {card.suit}
-                </span>
-            );
-        }
-
-        function Deck() {
-            return (
-                <div className="deck-container">
-                    <h1>Deck of Cards</h1>
-                    <div className="deck">Click to Draw</div>
+    
+    function Card({ card }) {
+        return (
+            <span className="card" data-value={card.value} data-suit={card.suit}>
+                <span>{card.suit}</span>
+            </span>
+        );
+    }
+    
+    function Deck() {
+        return (
+            <div className="deck-container">
+                <h1>Deck of Cards</h1>
+                <div className="deck">Click to Draw</div>    
+                {/* Example of rendering sample cards with correct layout */}
+                <div className="drawn-cards">
+                    <Card card={{ suit: "♠️", value: "A" }} />
+                    <Card card={{ suit: "♥️", value: "J" }} />
+                    <Card card={{ suit: "♦️", value: "3" }} />
+                    <Card card={{ suit: "♣️", value: "7" }} />
                 </div>
+            </div>
             );
         }
-
-        ReactDOM.render(<Deck />, document.getElementById("root"));
+    
+    ReactDOM.render(<Deck />, document.getElementById("root"));
     </script>
+    
 
 </body>
 </html>

@@ -83,6 +83,29 @@ function Deck() {
         setDeck(deck.filter((card) => !newDrawnCards.includes(card)));
         setPickedCard(null);
     };
+    /**
+     * Handles selecting a card for swapping.
+     * - If no card is picked, it selects the clicked card.
+     * - If a card is already picked, clicking a second card swaps their positions.
+     */
+    const handleSwapCard = (card) => {
+        if (!pickedCard) {
+            // Select the first card
+            setPickedCard(card);
+        } else if (pickedCard === card) {
+            // Unselect the picked card if clicked again
+            setPickedCard(null);
+        } else {
+            // Swap the picked card with the new one
+            const NewSwapedCards = drawnCards.map((tempCards) =>
+                tempCards === pickedCard ? card : tempCards === card ? pickedCard : tempCards
+            );
+
+            setDrawnCards(NewSwapedCards);
+            setPickedCard(null); // Reset selection after swap
+        }
+    };
+
 
     /**
      * Resets the game to its original state with a full deck.
@@ -161,7 +184,7 @@ function Deck() {
                         key={index}
                         card={card}
                         isPicked={pickedCard === card}
-                        onPick={handlePickCard}
+                        onPick={handleSwapCard}
                     />
                 ))}
             </div>

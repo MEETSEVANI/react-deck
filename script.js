@@ -95,20 +95,6 @@ function Deck() {
     };
 
     /**
-     * Handles selecting (picking) a card.
-     * Clicking the same card twice deselects it.
-     * Clicking a different card changes the selection.
-     * @param {Object} card - The card object being clicked.
-     */
-    const handlePickCard = (card) => {
-        if (pickedCard && pickedCard === card) {
-            setPickedCard(null); 
-        } else {
-            setPickedCard(card);
-        }
-    };
-
-    /**
      * Removes the currently selected card from the drawn cards list.
      * The removed card is permanently discarded and not returned to the deck.
      */
